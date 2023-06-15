@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTPless Form</title>
+</head>
+<body>
+
+  <form id="otplessForm">
+    <label for="whatsappNumber">WhatsApp Number:</label>
+    <input type="text" id="whatsappNumber" name="whatsappNumber"><br><br>
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+
+  <script type="text/javascript" src="https://otpless.com/auth.js"></script>
+  <script type="text/javascript">
+    document.getElementById('otplessForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var whatsappNumber = document.getElementById('whatsappNumber').value;
+      var name = document.getElementById('name').value;
+      
+      var otplessUser = {
+        whatsappNumber: whatsappNumber,
+        name: name
+      };
+      
+      otpless(otplessUser);
+    });
+    
+    function otpless(otplessUser) {
+      alert(JSON.stringify(otplessUser));
+    }
+  </script>
+</body>
+</html>
